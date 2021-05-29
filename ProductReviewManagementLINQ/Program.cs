@@ -88,6 +88,16 @@ namespace ProductReviewManagementLINQ
             {
                 Console.WriteLine("ProductId ="+ row.productId+"   "+ "Review = "+row.review);
             }
+
+            //UC7
+            var highestRatedRow = (from rec in ReviewList
+                                    orderby rec.rating descending
+                                    select rec);
+            foreach (var row in highestRatedRows.Skip(5))
+            {
+                Console.WriteLine(row.ToString());
+                outputList.Add(row.ToString());
+            }
         }
     }
 }
