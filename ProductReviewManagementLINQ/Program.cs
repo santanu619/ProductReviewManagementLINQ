@@ -60,7 +60,19 @@ namespace ProductReviewManagementLINQ
                 outputList.Add(row.ToString());
             }
 
-
+            //UC4
+            var records = (from rec in ReviewList
+                     group rec by rec.productId into g
+                    select new
+                           {
+                               productId = g.Key,
+                               ReviewCount = g.Count()
+                           });
+            foreach (var row in records)
+            {
+                Console.WriteLine(row.ToString());
+                outputList.Add(row.ToString());
+            }
         }
     }
 }
