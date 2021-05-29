@@ -50,6 +50,15 @@ namespace ProductReviewManagementLINQ
                 outputList.Add(row.ToString());
             }
 
+            //UC3
+            var data = (from rec in ReviewList
+                        where rec.rating > 3 && (rec.productId == 1 || rec.productId == 3 || rec.productId == 9)
+                      select rec);
+            foreach (var row in data)
+            {
+                Console.WriteLine(row.ToString());
+                outputList.Add(row.ToString());
+            }
 
 
         }
