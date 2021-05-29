@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductReviewManagementLINQ", "ProductReviewManagementLINQ\ProductReviewManagementLINQ.csproj", "{787006C4-9895-42C5-8EB3-F5581C1765AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{787006C4-9895-42C5-8EB3-F5581C1765AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787006C4-9895-42C5-8EB3-F5581C1765AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787006C4-9895-42C5-8EB3-F5581C1765AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787006C4-9895-42C5-8EB3-F5581C1765AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CC17FD3-7416-4AAE-8D08-716C0278ABC2}
+	EndGlobalSection
+EndGlobal
