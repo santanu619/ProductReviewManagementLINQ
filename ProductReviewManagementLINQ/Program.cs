@@ -80,6 +80,14 @@ namespace ProductReviewManagementLINQ
             {
                 Console.WriteLine(row.productId+"  "+row.Count);
             }
+            
+            //UC6
+            var elements = (from rec in ReviewList
+                            select new { rec.productId, rec.review });
+            foreach (var row in elements)
+            {
+                Console.WriteLine("ProductId ="+ row.productId+"   "+ "Review = "+row.review);
+            }
         }
     }
 }
