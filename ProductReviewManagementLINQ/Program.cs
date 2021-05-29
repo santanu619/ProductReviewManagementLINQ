@@ -73,6 +73,13 @@ namespace ProductReviewManagementLINQ
                 Console.WriteLine(row.ToString());
                 outputList.Add(row.ToString());
             }
+
+            //UC5
+            var element = ReviewList.GroupBy(l => l.productId).Select(l => new { productId = l.Key, Count = l.Count() });
+            foreach (var row in element)
+            {
+                Console.WriteLine(row.productId+"  "+row.Count);
+            }
         }
     }
 }
