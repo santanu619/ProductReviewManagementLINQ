@@ -143,18 +143,30 @@ namespace ProductReviewManagementLINQ
             }
 
             //UC11
-            var niceResult = from record in datatable.AsEnumerable()
-                             where record.Field<string>("Review").Contains("nice")
+            var niceResult = from rec in datatable.AsEnumerable()
+                             where rec.Field<string>("Review").Contains("nice")
                              select new
                              {
-                                 product = record.Field<int>("Product Id")
+                                 product = rec.Field<int>("Product Id")
                              };
             foreach (var productid in niceResult)
             {
                 Console.WriteLine(productid);
             }
 
-
+            //UC12
+            var retrieveProductID = from rec in datatable.AsEnumerable()
+                             where rec.Field<int>("Product Id") == 10
+                             orderby rec.Field<double>("Rating") descending
+                             select new
+                             {
+                                 product = rec.Field<int>("Product Id"),
+                                 rating = rec.Field<double>("Rating")
+                             };
+            foreach (var rec in retrieveProductID)
+            {
+                Console.WriteLine(rec.product + "  " + rec.rating);
+            }
         }
     }
 }
