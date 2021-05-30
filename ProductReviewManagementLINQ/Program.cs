@@ -1,13 +1,17 @@
-﻿using DocumentFormat.OpenXml.Drawing;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 
 namespace ProductReviewManagementLINQ
 {
     class Program
     {
+       
+
         static void Main(string[] args)
         {
             //UC1
@@ -101,16 +105,31 @@ namespace ProductReviewManagementLINQ
             }
 
             //UC8
+            DataTable datatable = new DataTable();
             List<ProductReview> Review = new List<ProductReview>();
-            Table.Columns.Add("Product Id", typeof(int));
-            table.Columns.Add("User Id", typeof(int));
-            table.Columns.Add("Rating", typeof(double));
-            table.Columns.Add("Review", typeof(string));
-            table.Columns.Add("IsLike", typeof(bool));
-            foreach (var records in Review)
+            datatable.Columns.Add("Product Id", typeof(int));
+            datatable.Columns.Add("User Id", typeof(int));
+            datatable.Columns.Add("Rating", typeof(double));
+            datatable.Columns.Add("Review", typeof(string));
+            datatable.Columns.Add("IsLike", typeof(bool));
+            foreach (var rec in Review)
             {
-                table.Rows.Add(records.ProductID, records.UserID, records.Rating, records.Review, records.IsLike);
+                datatable.Rows.Add(rec.productId, rec.userId, rec.rating, rec.review, rec.isLike);
             }
+
+            //UC9
+            var dataRecord = from rec in datatable.AsEnumerable()
+                             where rec.Field<bool>("IsLike") == true
+                             select new
+                             {
+                                 product = rec.Field<int>("Product Id")
+                             };
+            foreach (var productid in dataRecord)
+            {
+                Console.WriteLine(productid);
+            }
+
+
         }
     }
 }
