@@ -118,13 +118,38 @@ namespace ProductReviewManagementLINQ
             }
 
             //UC9
-            var dataRecord = from rec in datatable.AsEnumerable()
+            var dataIslike = from rec in datatable.AsEnumerable()
                              where rec.Field<bool>("IsLike") == true
                              select new
                              {
                                  product = rec.Field<int>("Product Id")
                              };
-            foreach (var productid in dataRecord)
+            foreach (var productid in dataIslike)
+            {
+                Console.WriteLine(productid);
+            }
+
+            //UC10
+            var average = from rec in datatable.AsEnumerable()
+                             group rec by rec.Field<int>("Product Id") into g
+                             select new
+                             {
+                                 product = g.Key,
+                                 averageRating = g.Average(a => a.Field<double>("Rating"))
+                             };
+            foreach (var rec in average)
+            {
+                Console.WriteLine("Product Id {0} Average rating {1} ", rec.product, rec.averageRating);
+            }
+
+            //UC11
+            var niceResult = from record in datatable.AsEnumerable()
+                             where record.Field<string>("Review").Contains("nice")
+                             select new
+                             {
+                                 product = record.Field<int>("Product Id")
+                             };
+            foreach (var productid in niceResult)
             {
                 Console.WriteLine(productid);
             }
