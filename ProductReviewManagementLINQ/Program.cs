@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Drawing;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,6 +98,18 @@ namespace ProductReviewManagementLINQ
             {
                 Console.WriteLine(row.ToString());
                 outputList.Add(row.ToString());
+            }
+
+            //UC8
+            List<ProductReview> Review = new List<ProductReview>();
+            Table.Columns.Add("Product Id", typeof(int));
+            table.Columns.Add("User Id", typeof(int));
+            table.Columns.Add("Rating", typeof(double));
+            table.Columns.Add("Review", typeof(string));
+            table.Columns.Add("IsLike", typeof(bool));
+            foreach (var records in Review)
+            {
+                table.Rows.Add(records.ProductID, records.UserID, records.Rating, records.Review, records.IsLike);
             }
         }
     }
